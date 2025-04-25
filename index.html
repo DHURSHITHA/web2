@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -27,6 +27,85 @@ function play(user) {
   const win = user === bot ? 'Draw' : 
               (user==='Rock'&&bot==='Scissors' || user==='Paper'&&bot==='Rock' || user==='Scissors'&&bot==='Paper') ? 'You Win!' : 'You Lose!';
   result.innerHTML = `You: ${user} | Bot: ${bot} → ${win}`;
+}
+</script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RPS Game</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .btn {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+
+  #result {
+    margin-top: 30px;
+    font-size: 24px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    animation: fade 1s;
+    display: inline-block;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <div>
+    <button class="btn" onclick="play('Rock')">🪨 Rock</button>
+    <button class="btn" onclick="play('Paper')">📄 Paper</button>
+    <button class="btn" onclick="play('Scissors')">✂️ Scissors</button>
+  </div>
+  <div id="result"></div>
+<script>
+function play(user) {
+  const options = ['Rock', 'Paper', 'Scissors'];
+  if (!options.includes(user)) return alert('Invalid choice!');
+  const bot = options[Math.floor(Math.random() * 3)];
+  const win = user === bot ? 'Draw' :
+              (user === 'Rock' && bot === 'Scissors' ||
+               user === 'Paper' && bot === 'Rock' ||
+               user === 'Scissors' && bot === 'Paper') ? 'You Win!' : 'You Lose!';
+  result.innerHTML = `You: ${user} | Bot: ${bot} → <strong>${win}</strong>`;
 }
 </script>
 </body>
