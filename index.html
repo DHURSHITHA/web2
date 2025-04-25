@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RPS Game</title>
+<style>
+body { font-family:sans-serif; text-align:center; padding:50px; }
+.btn { padding:10px 20px; margin:5px; font-size:16px; cursor:pointer; transition:.3s; }
+.btn:hover { transform:scale(1.1); }
+#result { margin-top:20px; font-size:20px; animation:fade 1s; }
+@keyframes fade { from {opacity:0} to {opacity:1} }
+</style>
+</head>
+<body>
+<h1>Rock Paper Scissors</h1>
+<div>
+  <button class="btn" onclick="play('Rock')">Rock</button>
+  <button class="btn" onclick="play('Paper')">Paper</button>
+  <button class="btn" onclick="play('Scissors')">Scissors</button>
+</div>
+<div id="result"></div>
+<script>
+function play(user) {
+  const options = ['Rock', 'Paper', 'Scissors'];
+  if (!options.includes(user)) return alert('Invalid choice!');
+  const bot = options[Math.floor(Math.random()*3)];
+  const win = user === bot ? 'Draw' : 
+              (user==='Rock'&&bot==='Scissors' || user==='Paper'&&bot==='Rock' || user==='Scissors'&&bot==='Paper') ? 'You Win!' : 'You Lose!';
+  result.innerHTML = `You: ${user} | Bot: ${bot} → ${win}`;
+}
+</script>
+</body>
+</html>
